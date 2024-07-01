@@ -19,9 +19,12 @@ public class PersonB extends Frame implements Runnable, ActionListener{
 
     // Constructor
     PersonB(){
-        textField = new TextField();
         textArea = new TextArea();
+        textArea.setBounds(50, 50, 450, 450);
+        textField = new TextField();
+        textField.setBounds(50, 520, 200, 40);
         sendButton = new Button("send");
+        sendButton.setBounds(260, 520, 100, 40);
 
         // actionlistener interface is used to create listener for the send button
         sendButton.addActionListener(this);
@@ -35,13 +38,13 @@ public class PersonB extends Frame implements Runnable, ActionListener{
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         } catch (IOException e) {
-
+            // exception statement
         }
         
 
         // add all components to the fram
-        add(textField);
         add(textArea);
+        add(textField);
         add(sendButton);
 
         // created thread for the listener 
@@ -50,9 +53,9 @@ public class PersonB extends Frame implements Runnable, ActionListener{
         chatThread.start();
 
         // userinterface
-        setSize(500,500);
+        setSize(600,600);
         setTitle("PersonB");
-        setLayout(new FlowLayout());
+        setLayout(null);
         setVisible(true);
     }
 
@@ -73,12 +76,8 @@ public class PersonB extends Frame implements Runnable, ActionListener{
             dataOutputStream.flush();
 
         } catch (IOException e) {
-
+            // exception statement
         }
-    }
-
-    public static void main(String[] args){
-        new PersonB();
     }
 
     // method for running the thread
@@ -98,4 +97,7 @@ public class PersonB extends Frame implements Runnable, ActionListener{
         }
     }
 
+    public static void main(String[] args){
+        new PersonB();
+    }
 }

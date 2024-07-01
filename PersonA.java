@@ -21,9 +21,13 @@ public class PersonA extends Frame implements Runnable, ActionListener{
 
     // Constructor
     PersonA(){
-        textField = new TextField();
+        // creating the components for the ui
         textArea = new TextArea();
+        textArea.setBounds(50, 50, 450, 450);
+        textField = new TextField();
+        textField.setBounds(50, 520, 200, 40);
         sendButton = new Button("send");
+        sendButton.setBounds(260, 520, 100, 40);
 
         // actionlistener interface is used to create listener for the send button
         sendButton.addActionListener(this);
@@ -38,13 +42,13 @@ public class PersonA extends Frame implements Runnable, ActionListener{
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         } catch (IOException e) {
-
+            // exception statement
         }
         
 
         // add all components to the fram
-        add(textField);
         add(textArea);
+        add(textField);
         add(sendButton);
 
         // created thread for the listener 
@@ -53,9 +57,9 @@ public class PersonA extends Frame implements Runnable, ActionListener{
         chatThread.start();
 
         // userinterface
-        setSize(500,500);
+        setSize(600,600);
         setTitle("PersonA");
-        setLayout(new FlowLayout());
+        setLayout(null);
         setVisible(true);
     }
 
@@ -75,12 +79,8 @@ public class PersonA extends Frame implements Runnable, ActionListener{
             // flush() method will send the message immediately, without storing it in the buffer
             dataOutputStream.flush();
         } catch (IOException e) {
-
+            // exception statement
         }
-    }
-
-    public static void main(String[] args){
-        new PersonA();
     }
 
     // method for running the thread
@@ -94,8 +94,12 @@ public class PersonA extends Frame implements Runnable, ActionListener{
                 textArea.append("PersonB: " + message+"\n");
 
             } catch (IOException e) {
-
+                // exception statement
             }
         }
+    }
+    
+    public static void main(String[] args){
+        new PersonA();
     }
 }
