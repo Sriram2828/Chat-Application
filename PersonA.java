@@ -84,6 +84,7 @@ public class PersonA extends Frame implements Runnable, ActionListener{
     }
 
     // method for running the thread
+    @Override
     public void run(){
         // checking for the receiving messages
         while(true){
@@ -98,7 +99,7 @@ public class PersonA extends Frame implements Runnable, ActionListener{
             }
         }
     }
-    
+
     public static void main(String[] args){
         new PersonA();
     }
